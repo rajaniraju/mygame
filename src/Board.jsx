@@ -6,9 +6,8 @@ export default class Board extends Component {
     super(props);
 
     this.state = {
-      player1: "X",
-      player2: "o",
-      currentPlayer: null,      
+      currentPlayer: "player1",
+      currentSymbol: "X",
       board: [
         ["", "", ""],
         ["", "", ""],
@@ -16,27 +15,36 @@ export default class Board extends Component {
       ],
     };
   }
-  onClick(){}
+  onClick = () => {
+    console.log("I have clicked");
+    let currentPlayer = this.player1 ? this.player2 : this.player1;
+    let currentSymbol = this.player1 ? "X" : "O";
+
+    this.setState({
+      currentPlayer: currentPlayer,
+      currentSymbol: currentSymbol,
+    });
+  };
 
   render() {
     return (
       <div>
         <div className="container">
-          <div>{this.state.player1} now playing</div>
+          <div>{this.state.currentPlayer} now playing</div>
           <div>
-          <Square value={this.state.board[0][0]}/>
-          <Square value={this.state.board[0][1]}/>
-          <Square value={this.state.board[0][2]}/>
+            <Square onClick={this.onClick} />
+            <Square onClick={this.onClick} />
+            <Square onClick={this.onClick} />
           </div>
           <div>
-          <Square value={this.state.board[1][0]}/>
-          <Square value={this.state.board[1][1]}/>
-          <Square value={this.state.board[1][2]}/>
+            <Square onClick={this.onClick} />
+            <Square onClick={this.onClick} />
+            <Square onClick={this.onClick} />
           </div>
           <div>
-          <Square value={this.state.board[2][0]}/>
-          <Square value={this.state.board[2][1]}/>
-          <Square value={this.state.board[2][2]}/>
+            <Square onClick={this.onClick} />
+            <Square onClick={this.onClick} />
+            <Square onClick={this.onClick} />
           </div>
         </div>
       </div>
