@@ -6,7 +6,8 @@ export default class Board extends Component {
     super(props);
 
     this.state = {
-      currentPlayer: "player1",
+      player1: true,
+      currentPlayer: "Player 1",
       currentSymbol: "X",
       board: [
         ["", "", ""],
@@ -17,12 +18,13 @@ export default class Board extends Component {
   }
   onClick = () => {
     console.log("I have clicked");
-    let currentPlayer = this.player1 ? this.player2 : this.player1;
-    let currentSymbol = this.player1 ? "X" : "O";
+    let currentPlayer = this.state.player1 ? "Player 2" : "Player 1";
+    let currentSymbol = this.state.player1 ? "X" : "O";
 
     this.setState({
       currentPlayer: currentPlayer,
       currentSymbol: currentSymbol,
+      player1: !this.state.player1,
     });
   };
 
