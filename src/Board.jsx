@@ -4,47 +4,41 @@ import Square from "./square";
 export default class Board extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      player:" ",
-      index: [1,2,3,4,5,6,7,8,9]
-     
+      player1: "X",
+      player2: "o",
+      currentPlayer: null,      
+      board: [
+        ["", "", ""],
+        ["", "", ""],
+        ["", "", ""],
+      ],
     };
   }
-  // getIndex(index){
-  //   for (let i=0;i<index.length;i++){
-  //     console.log(i)
-  //     return i;
-      
-  choosePlayer(){
-const {player}= this.state
-return player===" "?"player1":"player2"
-    }
+  onClick(){}
 
   render() {
     return (
       <div>
-      
-      <div className="container">
-      <div>{this.choosePlayer()} now playing</div>
-        <div className="cell">
-          <div className="row">
-          
-            <Square index="1" />
-            <Square index="2" />
-            <Square index="3" />
+        <div className="container">
+          <div>{this.state.player1} now playing</div>
+          <div>
+          <Square value={this.state.board[0][0]}/>
+          <Square value={this.state.board[0][1]}/>
+          <Square value={this.state.board[0][2]}/>
+          </div>
+          <div>
+          <Square value={this.state.board[1][0]}/>
+          <Square value={this.state.board[1][1]}/>
+          <Square value={this.state.board[1][2]}/>
+          </div>
+          <div>
+          <Square value={this.state.board[2][0]}/>
+          <Square value={this.state.board[2][1]}/>
+          <Square value={this.state.board[2][2]}/>
           </div>
         </div>
-        <div className="row">
-          <Square index="4" />
-          <Square index="5" />
-          <Square index="6" />
-        </div>
-        <div className="row">
-          <Square index="7" />
-          <Square index="8" />
-          <Square index="9" />
-        </div>
-      </div>
       </div>
     );
   }
