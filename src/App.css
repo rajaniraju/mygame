@@ -11,6 +11,7 @@
   background: #eee;
 }
 .btn {
+  
   outline: none;
   width: 100px;
   height: 100px;
@@ -24,6 +25,7 @@
 
 button:hover {
   cursor: pointer;
-  background: blue;
+  background: rgb(224, 224, 233);
+  text-align: center;
   color: white;
 }

@@ -34,19 +34,19 @@ export default class Board extends Component {
         <div className="container">
           <div>{this.state.currentPlayer} now playing</div>
           <div>
-            <Square onClick={this.onClick} />
-            <Square onClick={this.onClick} />
-            <Square onClick={this.onClick} />
+            <Square onClick={this.onClick} text={this.state.currentSymbol} />
+            <Square onClick={this.onClick} text={this.state.currentSymbol} />
+            <Square onClick={this.onClick} text={this.state.currentSymbol} />
           </div>
           <div>
-            <Square onClick={this.onClick} />
-            <Square onClick={this.onClick} />
-            <Square onClick={this.onClick} />
+            <Square onClick={this.onClick} text={this.state.currentSymbol} />
+            <Square onClick={this.onClick} text={this.state.currentSymbol} />
+            <Square onClick={this.onClick} text={this.state.currentSymbol} />
           </div>
           <div>
-            <Square onClick={this.onClick} />
-            <Square onClick={this.onClick} />
-            <Square onClick={this.onClick} />
+            <Square onClick={this.onClick} text={this.state.currentSymbol} />
+            <Square onClick={this.onClick} text={this.state.currentSymbol} />
+            <Square onClick={this.onClick} text={this.state.currentSymbol} />
           </div>
         </div>
       </div>

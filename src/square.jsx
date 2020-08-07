@@ -14,7 +14,7 @@ class Square extends React.Component {
   render() {
     return (
       <button type="button" className="btn" onClick={this.whenClick}>
-        {" "}
+        {this.props.text}
       </button>
     );
   }
