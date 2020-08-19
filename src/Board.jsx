@@ -9,6 +9,7 @@ export default class Board extends Component {
       player1: true,
       gameOver: false,
       currentPlayer: "Player 1",
+      winner: "",
       currentSymbol: "X",
       gameState: [
         ["", "", ""],
@@ -18,11 +19,10 @@ export default class Board extends Component {
     };
   }
   onClick = (row, col) => {
-    console.log("I have clicked");
     console.log(row, col);
-
     let currentPlayer = this.state.player1 ? "Player 2" : "Player 1";
     let currentSymbol = this.state.player1 ? "X" : "O";
+
     //changing state of array without setState.
     let gameState = this.state.gameState;
     gameState[row][col] = currentSymbol;
@@ -30,6 +30,7 @@ export default class Board extends Component {
     this.setState(
       {
         currentPlayer: currentPlayer,
+        winner: this.state.winner,
         currentSymbol: currentSymbol,
         player1: !this.state.player1,
         gameState: gameState,
@@ -42,8 +43,11 @@ export default class Board extends Component {
       }
     );
   };
-
-  checkGameOver(gameState) {
+  declareWinner = (currentPlayer) => {
+    let winner = currentPlayer === "Player 1" ? "Player 2" : "Player 1";
+    this.setState({ winner: winner });
+  };
+  checkGameOver = (gameState) => {
     //horizontal
     this.checkHorizontalRow(gameState, 0);
     this.checkHorizontalRow(gameState, 1);
@@ -52,20 +56,23 @@ export default class Board extends Component {
     this.checkVeticalColumn(gameState, 1);
     this.checkVeticalColumn(gameState, 2);
     this.checkDiagonal(gameState);
-  }
-  checkDiagonal = (gameState) => {
+  };
+  checkDiagonal = (gameState, winner) => {
     if (
       gameState[0][0] === gameState[1][1] &&
       gameState[1][1] === gameState[2][2] &&
       gameState[2][2] !== ""
     ) {
+      
       alert("Game over");
+      this.declareWinner()
     }
     if (
       gameState[2][0] === gameState[1][1] &&
       gameState[1][1] === gameState[0][2] &&
       gameState[0][2] !== ""
     ) {
+      this.declareWinner();
       alert("Game over");
     }
   };
@@ -76,6 +83,7 @@ export default class Board extends Component {
       gameState[row][1] === gameState[row][2] &&
       gameState[row][1] !== ""
     ) {
+      this.declareWinner();
       alert("Game over");
     }
   };
@@ -85,6 +93,7 @@ export default class Board extends Component {
       gameState[1][col] === gameState[2][col] &&
       gameState[2][col] !== ""
     ) {
+      this.declareWinner();
       alert("Game over");
     }
   };
@@ -154,7 +163,7 @@ export default class Board extends Component {
               text={this.state.gameState[2][2]}
             />
           </div>
-          <span>{this.whenGameOver}</span>
+          <span>Winner: {this.state.winner}</span>
         </div>
       </div>
     );
