@@ -63,9 +63,8 @@ export default class Board extends Component {
       gameState[1][1] === gameState[2][2] &&
       gameState[2][2] !== ""
     ) {
-      
+      this.declareWinner();
       alert("Game over");
-      this.declareWinner()
     }
     if (
       gameState[2][0] === gameState[1][1] &&
@@ -102,7 +101,8 @@ export default class Board extends Component {
     return (
       <div>
         <div className="container">
-          <div>{this.state.currentPlayer} now playing</div>
+          <h2 className="playerName">{this.state.currentPlayer}</h2>{" "}
+          <span className="playing">now playing</span>
           <div>
             <Square
               onClick={this.onClick}
@@ -163,7 +163,9 @@ export default class Board extends Component {
               text={this.state.gameState[2][2]}
             />
           </div>
-          <span>Winner: {this.state.winner}</span>
+          <div>
+            <h3 className="winner">Winner: {this.state.winner}</h3>
+          </div>
         </div>
       </div>
     );
